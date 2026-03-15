@@ -63,6 +63,10 @@ import cafe.adriel.chroma.view.components.TuningDeviationBars
 import cafe.adriel.chroma.view.components.TuningInfo
 import cafe.adriel.chroma.view.components.TuningNote
 import cafe.adriel.chroma.view.theme.ChromaTheme
+import com.google.accompanist.insets.ProvideWindowInsets
+import com.google.accompanist.insets.systemBarsPadding
+import com.google.accompanist.insets.statusBarsPadding
+import com.google.accompanist.insets.navigationBarsPadding
 
 class TunerScreen(
     private val viewModel: TunerViewModel
@@ -81,27 +85,29 @@ class TunerScreen(
         }
 
         ChromaTheme {
-            BackdropScaffold(
-                appBar = {
-                    TunerTopBar(onSettingsClicked = { scaffoldState.toggle(scope) })
-                },
-                backLayerContent = {
-                    TunerContent(screenState.tuning, screenState.settings)
+            ProvideWindowInsets {
+                BackdropScaffold(
+                    appBar = {
+                        TunerTopBar(onSettingsClicked = { scaffoldState.toggle(scope) })
+                    },
+                    backLayerContent = {
+                        TunerContent(screenState.tuning, screenState.settings)
 
-                    if (screenState.hasRequiredPermissions.not()) {
-                        RequestPermissionSnackbar(scaffoldState.snackbarHostState, context::openExternalAppSettings)
-                    }
+                        if (screenState.hasRequiredPermissions.not()) {
+                            RequestPermissionSnackbar(scaffoldState.snackbarHostState, context::openExternalAppSettings)
+                        }
 
-                    screenState.message?.let { message ->
-                        MessageSnackbar(message, scaffoldState.snackbarHostState, viewModel::consumeMessage)
-                    }
-                },
-                frontLayerContent = {
-                    TunerSettings(screenState.settings, screenState.isBillingSupported)
-                },
-                headerHeight = Dp.Hairline,
-                scaffoldState = scaffoldState
-            )
+                        screenState.message?.let { message ->
+                            MessageSnackbar(message, scaffoldState.snackbarHostState, viewModel::consumeMessage)
+                        }
+                    },
+                    frontLayerContent = {
+                        TunerSettings(screenState.settings, screenState.isBillingSupported)
+                    },
+                    headerHeight = Dp.Hairline,
+                    scaffoldState = scaffoldState
+                )
+            }
         }
     }
 
@@ -128,6 +134,7 @@ class TunerScreen(
                     )
                 }
             },
+            modifier = Modifier.statusBarsPadding(),
             backgroundColor = Color.Transparent,
             elevation = Dp.Hairline
         )
@@ -180,7 +187,7 @@ class TunerScreen(
         val (showDonateDialog, setDonateDialogVisible) = remember { mutableStateOf(false) }
         val context = LocalContext.current
 
-        LazyColumn {
+        LazyColumn(modifier = Modifier.navigationBarsPadding()) {
             item {
                 SwitchPreference(
                     title = stringResource(R.string.advanced_mode),

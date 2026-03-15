@@ -70,6 +70,7 @@ dependencies {
     implementation "androidx.compose.material:material:$compose_version"
     implementation "androidx.compose.material:material-icons-core:$compose_version"
     implementation "androidx.compose.material:material-icons-extended:$compose_version"
+    implementation "com.google.accompanist:accompanist-insets:0.18.0"
 
     // Firebase
     implementation "com.google.firebase:firebase-core:19.0.1"
