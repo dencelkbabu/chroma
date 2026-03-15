@@ -135,8 +135,11 @@ private fun Subtitle(value: String) =
 @Composable
 private fun SelectOption(title: String, selected: Boolean, position: SelectionOptionPosition, onSelected: () -> Unit) {
     val color by animateColorAsState(
-        if (selected) MaterialTheme.colors.secondaryVariant
-        else MaterialTheme.colors.primary
+        if (selected) {
+            MaterialTheme.colors.secondaryVariant
+        } else {
+            MaterialTheme.colors.primary
+        }
     )
 
     TextButton(

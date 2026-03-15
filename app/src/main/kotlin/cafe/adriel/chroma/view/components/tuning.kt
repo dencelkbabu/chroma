@@ -162,7 +162,10 @@ fun TuningDeviationBar(color: Color, height: Dp, active: Boolean) =
             .padding(horizontal = 10.dp)
             .size(width = 3.dp, height = height)
             .background(
-                if (active) color
-                else MaterialTheme.colors.onBackground.copy(alpha = .2f)
+                if (active) {
+                    color
+                } else {
+                    MaterialTheme.colors.onBackground.copy(alpha = .2f)
+                }
             )
     )

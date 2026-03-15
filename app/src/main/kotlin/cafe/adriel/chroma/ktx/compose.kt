@@ -8,7 +8,10 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterialApi::class)
 fun BackdropScaffoldState.toggle(scope: CoroutineScope) {
     scope.launch {
-        if (isConcealed) reveal()
-        else conceal()
+        if (isConcealed) {
+            reveal()
+        } else {
+            conceal()
+        }
     }
 }

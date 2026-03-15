@@ -179,7 +179,7 @@ fun DonateDialog(onDonate: (DonationProduct) -> Unit, onClose: () -> Unit) {
             Button(
                 onClick = onClose,
                 colors = ButtonDefaults.buttonColors(contentColor = MaterialTheme.colors.onBackground),
-                modifier = Modifier.height(ButtonDefaults.MinHeight),
+                modifier = Modifier.height(ButtonDefaults.MinHeight)
             ) {
                 Text(
                     text = stringResource(R.string.later).uppercase(),
@@ -249,8 +249,11 @@ private fun ContactButtons() {
             .map { link ->
                 IconButton(
                     onClick = {
-                        if (link.url.isEmail()) context.sendContactEmail()
-                        else link.url.open(context)
+                        if (link.url.isEmail()) {
+                            context.sendContactEmail()
+                        } else {
+                            link.url.open(context)
+                        }
                     }
                 ) {
                     Icon(
