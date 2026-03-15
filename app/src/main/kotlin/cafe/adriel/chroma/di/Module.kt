@@ -40,10 +40,10 @@ val appModule = module {
 
         scoped {
             BillingManager(
-                activity = getSource<TunerActivity>(),
+                activity = getSource<TunerActivity>()!!,
                 messagingManager = get(),
                 kin = get(),
-                scope = getSource<TunerActivity>().lifecycleScope
+                scope = getSource<TunerActivity>()!!.lifecycleScope
             )
         }
 
@@ -51,19 +51,19 @@ val appModule = module {
             TunerManager(
                 settingsManager = get(),
                 permissionManager = get(),
-                lifecycleOwner = getSource<TunerActivity>()
+                lifecycleOwner = getSource<TunerActivity>()!!
             )
         }
 
         scoped {
             PermissionManager(
-                activity = getSource<TunerActivity>()
+                activity = getSource<TunerActivity>()!!
             )
         }
 
         scoped {
             MessagingManager(
-                context = getSource<TunerActivity>()
+                context = getSource<TunerActivity>()!!
             )
         }
     }

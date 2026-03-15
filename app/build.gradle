@@ -85,8 +85,8 @@ dependencies {
 
 
     // DI
-    implementation "io.insert-koin:koin-androidx-scope:$koin_version"
-    implementation "io.insert-koin:koin-androidx-viewmodel:$koin_version"
+    implementation "io.insert-koin:koin-androidx-compose:3.5.3"
+
 
     // Others
     implementation "com.github.adrielcafe.satchel:satchel-core:1.0.3"

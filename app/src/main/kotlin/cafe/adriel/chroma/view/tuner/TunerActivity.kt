@@ -3,12 +3,18 @@ package cafe.adriel.chroma.view.tuner
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import cafe.adriel.chroma.ktx.keepScreenOn
 import cafe.adriel.chroma.manager.BillingManager
-import org.koin.androidx.scope.ScopeActivity
+import org.koin.android.ext.android.inject
+import org.koin.android.scope.AndroidScopeComponent
+import org.koin.androidx.scope.activityScope
+import org.koin.core.scope.Scope
 
-class TunerActivity : ScopeActivity() {
+class TunerActivity : AppCompatActivity(), AndroidScopeComponent {
+
+    override val scope: Scope by activityScope()
 
     private val screen by inject<TunerScreen>()
     private val billingManager by inject<BillingManager>()
