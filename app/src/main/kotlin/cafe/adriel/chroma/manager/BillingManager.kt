@@ -36,6 +36,7 @@ class BillingManager(
         when (event) {
             Lifecycle.Event.ON_START -> kin.bind(this)
             Lifecycle.Event.ON_STOP -> kin.unbind()
+            else -> {}
         }
     }
 

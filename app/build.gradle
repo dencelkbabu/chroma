@@ -4,11 +4,11 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 34
     defaultConfig {
         applicationId "cafe.adriel.chroma"
         minSdkVersion 21
-        targetSdkVersion 31
+        targetSdkVersion 34
         versionCode 15
         versionName "1.1.5"
         resConfigs 'en', 'pt'
@@ -40,10 +40,9 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11
         useIR = true
-    }
-    dexOptions {
-        preDexLibraries true
-        maxProcessCount 8
+        freeCompilerArgs += [
+            "-Xopt-in=kotlin.RequiresOptIn"
+        ]
     }
     packagingOptions {
         exclude 'META-INF/*'

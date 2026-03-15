@@ -18,6 +18,7 @@ class TunerActivity : ScopeActivity() {
         keepScreenOn()
     }
 
+    @Suppress("DEPRECATION")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (billingManager.verifyPurchase(requestCode, resultCode, data).not()) {
             super.onActivityResult(requestCode, resultCode, data)

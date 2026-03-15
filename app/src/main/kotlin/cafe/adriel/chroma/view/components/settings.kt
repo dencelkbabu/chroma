@@ -34,6 +34,7 @@ interface SelectOption<T : Enum<T>> {
 
     val labelRes: Int
 
+    @Suppress("UNCHECKED_CAST")
     val type: T
         get() = this as T
 }
