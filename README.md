@@ -4,6 +4,8 @@
 
 Chroma is a [chromatic tuner](https://en.wikipedia.org/wiki/Chromatic_scale), the perfect app to help you tune your musical instruments with precision and elegance.
 
+*Note: This app has been updated to modern 2026 standards, compiling for Android 16 with Gradle 8, Java 17, and modern Jetpack Compose.*
+
 Features:
 * Basic and complete UI modes
 * Noise suppressor

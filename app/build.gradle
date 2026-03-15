@@ -4,10 +4,11 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 
 android {
+    namespace "cafe.adriel.chroma"
     compileSdkVersion 34
     defaultConfig {
         applicationId "cafe.adriel.chroma"
-        minSdkVersion 21
+        minSdkVersion 24
         targetSdkVersion 34
         versionCode 15
         versionName "1.1.5"
@@ -15,31 +16,33 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField 'Boolean', 'RELEASE', 'false'
+            buildConfigField "Boolean", "RELEASE", "false"
+            firebaseCrashlytics { mappingFileUploadEnabled false }
         }
         release {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField 'Boolean', 'RELEASE', 'true'
+            buildConfigField "Boolean", "RELEASE", "true"
+            firebaseCrashlytics { mappingFileUploadEnabled false }
         }
     }
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin/'
     }
     buildFeatures {
+        buildConfig true
         compose true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion "1.1.0-alpha03"
+        kotlinCompilerExtensionVersion "1.5.14"
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11
-        useIR = true
+        jvmTarget = JavaVersion.VERSION_17
         freeCompilerArgs += [
             "-Xopt-in=kotlin.RequiresOptIn"
         ]

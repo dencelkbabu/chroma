@@ -1,7 +1,7 @@
 buildscript {
-    ext.kotlin_version = '1.5.30'
-    ext.koin_version = '2.2.3'
-    ext.compose_version = '1.1.0-alpha03'
+    ext.kotlin_version = '1.9.24'
+    ext.koin_version = '3.5.3'
+    ext.compose_version = '1.6.7'
     repositories {
         google()
         mavenCentral()
@@ -9,12 +9,12 @@ buildscript {
         maven { url 'https://plugins.gradle.org/m2/' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.2'
-        classpath "com.google.gms:google-services:4.3.10"
-        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.7.1'
+        classpath 'com.android.tools.build:gradle:8.4.2'
+        classpath "com.google.gms:google-services:4.4.1"
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:3.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.github.ben-manes:gradle-versions-plugin:0.39.0'
-        classpath 'org.jlleitschuh.gradle:ktlint-gradle:10.1.0'
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.51.0'
+        classpath 'org.jlleitschuh.gradle:ktlint-gradle:12.1.0'
     }
 }
 
@@ -28,7 +28,7 @@ allprojects {
         maven { url 'https://jitpack.io' }
     }
     ktlint {
-        version = "0.42.0"
+        version = "0.47.1"
         android = true
     }
 }
