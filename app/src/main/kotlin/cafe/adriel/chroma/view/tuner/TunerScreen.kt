@@ -4,8 +4,10 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.BackdropScaffold
 import androidx.compose.material.BackdropValue
@@ -30,7 +32,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import kotlinx.coroutines.launch
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalContext
@@ -63,10 +64,7 @@ import cafe.adriel.chroma.view.components.TuningDeviationBars
 import cafe.adriel.chroma.view.components.TuningInfo
 import cafe.adriel.chroma.view.components.TuningNote
 import cafe.adriel.chroma.view.theme.ChromaTheme
-import com.google.accompanist.insets.ProvideWindowInsets
-import com.google.accompanist.insets.systemBarsPadding
-import com.google.accompanist.insets.statusBarsPadding
-import com.google.accompanist.insets.navigationBarsPadding
+import kotlinx.coroutines.launch
 
 class TunerScreen(
     private val viewModel: TunerViewModel
@@ -85,29 +83,27 @@ class TunerScreen(
         }
 
         ChromaTheme {
-            ProvideWindowInsets {
-                BackdropScaffold(
-                    appBar = {
-                        TunerTopBar(onSettingsClicked = { scaffoldState.toggle(scope) })
-                    },
-                    backLayerContent = {
-                        TunerContent(screenState.tuning, screenState.settings)
+            BackdropScaffold(
+                appBar = {
+                    TunerTopBar(onSettingsClicked = { scaffoldState.toggle(scope) })
+                },
+                backLayerContent = {
+                    TunerContent(screenState.tuning, screenState.settings)
 
-                        if (screenState.hasRequiredPermissions.not()) {
-                            RequestPermissionSnackbar(scaffoldState.snackbarHostState, context::openExternalAppSettings)
-                        }
+                    if (screenState.hasRequiredPermissions.not()) {
+                        RequestPermissionSnackbar(scaffoldState.snackbarHostState, context::openExternalAppSettings)
+                    }
 
-                        screenState.message?.let { message ->
-                            MessageSnackbar(message, scaffoldState.snackbarHostState, viewModel::consumeMessage)
-                        }
-                    },
-                    frontLayerContent = {
-                        TunerSettings(screenState.settings, screenState.isBillingSupported)
-                    },
-                    headerHeight = Dp.Hairline,
-                    scaffoldState = scaffoldState
-                )
-            }
+                    screenState.message?.let { message ->
+                        MessageSnackbar(message, scaffoldState.snackbarHostState, viewModel::consumeMessage)
+                    }
+                },
+                frontLayerContent = {
+                    TunerSettings(screenState.settings, screenState.isBillingSupported)
+                },
+                headerHeight = Dp.Hairline,
+                scaffoldState = scaffoldState
+            )
         }
     }
 

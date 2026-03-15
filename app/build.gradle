@@ -76,7 +76,8 @@ dependencies {
     implementation "androidx.compose.material:material"
     implementation "androidx.compose.material:material-icons-core"
     implementation "androidx.compose.material:material-icons-extended"
-    implementation "com.google.accompanist:accompanist-insets:0.18.0"
+    implementation "com.google.accompanist:accompanist-systemuicontroller:0.32.0"
+
 
     // Firebase
     implementation platform("com.google.firebase:firebase-bom:33.0.0")
