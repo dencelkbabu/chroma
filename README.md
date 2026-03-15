@@ -4,7 +4,18 @@
 
 Chroma is a [chromatic tuner](https://en.wikipedia.org/wiki/Chromatic_scale), the perfect app to help you tune your musical instruments with precision and elegance.
 
-*Note: This app has been updated to modern 2026 standards, compiling for Android 16 with Gradle 8, Java 17, and modern Jetpack Compose.*
+---
+
+### 🚀 2026 Modernization Update
+This repository has been fully modernized from its original 2021 state while preserving the original brand and aesthetics.
+
+*   **Modern Stack**: Updated to **Gradle 8.7**, **Java 17**, and **Kotlin 1.9.24**.
+*   **Jetpack Compose**: Migrated to modern Compose with **BOM 2024.05.00** and **Compose 1.6.7**.
+*   **Edge-to-Edge UI**: Implemented full transparent status and navigation bars with modern `WindowInsets` support.
+*   **Architecture**: Migrated to **Koin 3.5.3** for better lifecycle management and modularity.
+*   **Stability**: Addressed legacy compiler warnings and enforced modern Android 15+ standards.
+
+---
 
 Features:
 * Basic and complete UI modes
