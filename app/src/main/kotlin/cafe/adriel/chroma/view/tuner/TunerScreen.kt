@@ -30,6 +30,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import kotlinx.coroutines.launch
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalContext
@@ -74,6 +75,10 @@ class TunerScreen(
         val scaffoldState = rememberBackdropScaffoldState(BackdropValue.Revealed)
         val scope = rememberCoroutineScope()
         val context = LocalContext.current
+
+        androidx.activity.compose.BackHandler(enabled = scaffoldState.isConcealed) {
+            scope.launch { scaffoldState.reveal() }
+        }
 
         ChromaTheme {
             BackdropScaffold(
