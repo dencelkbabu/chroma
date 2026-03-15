@@ -174,6 +174,7 @@ class TunerManager(
         return AudioDispatcher(audioStream, bufferSize, OVERLAP)
     }
 
+    @android.annotation.SuppressLint("MissingPermission")
     private fun getAudioRecord(bufferSize: Int) =
         AudioRecord(
             MediaRecorder.AudioSource.MIC,
